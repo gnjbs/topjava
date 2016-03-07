@@ -2,8 +2,7 @@ package ru.javawebinar.topjava.repository;
 
 import ru.javawebinar.topjava.model.UserMeal;
 
-import java.util.Collection;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
@@ -21,16 +20,24 @@ public class UserMealRepositoryImpl implements UserMealRepository {
 
     @Override
     public void delete(int id) {
-
+        repository.remove(id);
     }
 
     @Override
     public UserMeal get(int id) {
-        return null;
+        return repository.get(id);
     }
 
     @Override
     public Collection<UserMeal> getAll() {
-        return null;
+        List<UserMeal> userMealList = new ArrayList<UserMeal>(repository.values());
+        //sort by time
+        Collections.sort(userMealList, new Comparator<UserMeal>() {
+            @Override
+            public int compare(UserMeal o1, UserMeal o2) {
+                return o1.getDateTime().compareTo(o2.getDateTime());
+            }
+        });
+        return userMealList;
     }
 }
