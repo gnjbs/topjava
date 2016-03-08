@@ -53,7 +53,7 @@ public class UserMealRepositoryImpl implements UserMealRepository {
     }
 
     @Override
-    public Collection<UserMeal> getAll() {
+    public List<UserMeal> getAll() {
         List<UserMeal> userMeals = new ArrayList<UserMeal>(repository.values());
         //sort by time
         Collections.sort(userMeals, new Comparator<UserMeal>() {

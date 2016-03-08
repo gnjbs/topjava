@@ -2,7 +2,7 @@ package ru.javawebinar.topjava.repository;
 
 import ru.javawebinar.topjava.model.UserMeal;
 
-import java.util.Collection;
+import java.util.List;
 
 /**
  * Created by ArturDS on 07.03.2016.
@@ -16,7 +16,7 @@ public interface UserMealRepository {
 
     UserMeal get(int id);
 
-    Collection<UserMeal> getAll();
+    List<UserMeal> getAll();
 
     void clear();
 }
