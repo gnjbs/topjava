@@ -36,14 +36,17 @@
                 </td>
                 <td>${meal.description}</td>
                 <td>${meal.calories}</td>
-                <td><a href="meals?action=edit&id=${meal.id}">Edit</a></td>
+                <td><a href="meals?action=update&id=${meal.id}">Edit</a></td>
                 <td><a href="meals?action=delete&id=${meal.id}">Delete</a></td>
             </tr>
         </c:forEach>
     </table>
-    <a href="meals?action=create">Add Meal</a>
-    <button type="submit">Save</button>
-    <a href="meals?action=reinit">ReInit</a>
+    <a href="meals?action=create">
+        <button>Create</button>
+    </a>
+    <a href="meals?action=reinit">
+        <button>ReInit</button>
+    </a>
 </section>
 </body>
 </html>
