@@ -23,7 +23,7 @@ public class MealServlet extends HttpServlet {
     private UserMealRepository repository = new UserMealRepositoryImpl();
 
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws javax.servlet.ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         String id = request.getParameter("id");
         UserMeal userMeal = new UserMeal(id.isEmpty() ? null : Integer.valueOf(id),
@@ -39,16 +39,18 @@ public class MealServlet extends HttpServlet {
         String action = request.getParameter("action");
 
         if (action == null) {
+          //  LOG.info("getAll");
             request.setAttribute("mealList",
-                    UserMealsUtil.getFilteredMealsWithExceededByCycle(repository.getAll(), LocalTime.of(7, 0), LocalTime.of(12, 0), 2000) );
+                    UserMealsUtil.getFilteredMealsWithExceededByCycle(repository.getAll(),LocalTime.MIN,LocalTime.MAX, 2000));
             request.getRequestDispatcher("/mealList.jsp").forward(request, response);
         } else if (action.equals("delete")) {
             int id = getId(request);
+            //LOG.info("Delete {}", id);
             repository.delete(id);
             response.sendRedirect("meals");
         } else {
             final UserMeal meal = action.equals("create") ?
-                    new UserMeal(1,LocalDateTime.now(), "", 1000) :
+                    new UserMeal(LocalDateTime.now(), "", 1000) :
                     repository.get(getId(request));
             request.setAttribute("meal", meal);
             request.getRequestDispatcher("mealEdit.jsp").forward(request, response);
