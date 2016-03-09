@@ -6,7 +6,7 @@
     <title>Meal list</title>
     <b>mealList</b>
     <style>
-        .normal {
+        .notexceeded {
             color: green;
         }
 
@@ -33,10 +33,9 @@
         </thead>
         <c:forEach items="${mealList}" var="meal">
             <jsp:useBean id="meal" scope="page" type="ru.javawebinar.topjava.model.UserMealWithExceed"/>
-            <tr class="${meal.exceed ? 'exceeded' : 'normal'}">
+            <tr class="${meal.exceed ? 'exceeded' : 'notexceeded'}">
                 <td><fmt:parseDate value="${meal.dateTime}" pattern="y-M-dd'T'H:m" var="parsedDate"/>
-                        <fmt:formatDate value="${parsedDate}" pattern="yyyy.MM.dd HH:mm" />
-
+                    <fmt:formatDate value="${parsedDate}" pattern="yyyy.MM.dd HH:mm"/>
                 </td>
                 <td>${meal.description}</td>
                 <td>${meal.calories}</td>

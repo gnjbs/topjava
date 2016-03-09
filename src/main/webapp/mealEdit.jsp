@@ -1,6 +1,5 @@
 <head>
-    <title>Meal</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Meal Edit</title>
 </head>
 <body>
 <section>
@@ -23,7 +22,7 @@
             <dd><input type="number" value="${meal.calories}" name="calories"></dd>
         </dl>
         <button type="submit">Save</button>
-        <button onclick="window.history.back()">Cancel</button>
+        <button onclick="window.history.back()">Back</button>
     </form>
 </section>
 </body>
