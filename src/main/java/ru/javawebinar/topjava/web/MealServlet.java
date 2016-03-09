@@ -44,7 +44,7 @@ public class MealServlet extends HttpServlet {
         if (action == null) {
             LOG.info("getAll");
             request.setAttribute("mealList",
-                    UserMealsUtil.getFilteredMealsWithExceededByCycle(repository.getAll(),LocalTime.MIN,LocalTime.MAX, 2000));
+                    UserMealsUtil.getFilteredMealsWithExceededByCycle(repository.getAll(), LocalTime.MIN, LocalTime.MAX, 2000));
             request.getRequestDispatcher("/mealList.jsp").forward(request, response);
         } else if (action.equals("delete")) {
             int id = getId(request);
@@ -52,23 +52,21 @@ public class MealServlet extends HttpServlet {
             repository.delete(id);
             response.sendRedirect("meals");
 
-        } else if (action.equals("reinit")){
+        } else if (action.equals("reinit")) {
             LOG.info("ReInit");
             repository.clear();
             repository.initialize();
-            request.getRequestDispatcher("/mealList.jsp").forward(request, response);
             LOG.info("getAll");
             request.setAttribute("mealList",
-                    UserMealsUtil.getFilteredMealsWithExceededByCycle(repository.getAll(),LocalTime.MIN,LocalTime.MAX, 2000));
-
-        }else {
-            final UserMeal meal = action.equals("create") ?
-                    new UserMeal(LocalDateTime.now(), "", 1000) :
-                    repository.get(getId(request));
+                    UserMealsUtil.getFilteredMealsWithExceededByCycle(repository.getAll(), LocalTime.MIN, LocalTime.MAX, 2000));
+            request.getRequestDispatcher("/mealList.jsp").forward(request, response);
+        } else {
+            final UserMeal meal = action.equals("create") ? new UserMeal(LocalDateTime.now(), "", 1000) : repository.get(getId(request));
             request.setAttribute("meal", meal);
             request.getRequestDispatcher("mealEdit.jsp").forward(request, response);
         }
     }
+
     private int getId(HttpServletRequest request) {
         String paramId = Objects.requireNonNull(request.getParameter("id"));
         return Integer.valueOf(paramId);
