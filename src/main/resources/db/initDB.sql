@@ -19,7 +19,7 @@ CREATE UNIQUE INDEX users_unique_email_idx ON users (email);
 CREATE TABLE meals
 (
   id          INTEGER PRIMARY KEY DEFAULT nextval('global_seq'),
-  meal_date   TIMESTAMP NOT NULL,
+  meal_date   TIMESTAMP DEFAULT now(),
   description VARCHAR   NOT NULL,
   calories    INTEGER
 );
