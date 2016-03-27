@@ -53,7 +53,7 @@ public class JdbcUserMealRepositoryImpl implements UserMealRepository {
             userMeal.setId(newKey.intValue());
         } else {
             namedParameterJdbcTemplate.update(
-                    "UPDATE meals SET meal_date=:meal_date, description=:description, calories=:calories WHERE id=:id", map);
+                    "UPDATE meals SET meal_date=:meal_date, description=:description, calories=:calories " + "WHERE id=:id", map);
         }
         return userMeal;
 
@@ -74,11 +74,13 @@ public class JdbcUserMealRepositoryImpl implements UserMealRepository {
 
     @Override
     public List<UserMeal> getAll(int userId) {
-        jdbcTemplate.query("SELECT * FROM meals ORDER BY meal_date", ROW_MAPPER);
+        return jdbcTemplate.query("SELECT * FROM meals ORDER BY meal_date", ROW_MAPPER);
     }
 
     @Override
     public List<UserMeal> getBetween(LocalDateTime startDate, LocalDateTime endDate, int userId) {
+
+
         return null;
     }
 }
