@@ -12,6 +12,18 @@ public class UserMeal extends BaseEntity {
 
     protected String description;
 
+    public void setDateTime(LocalDateTime dateTime) {
+        this.dateTime = dateTime;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setCalories(int calories) {
+        this.calories = calories;
+    }
+
     protected int calories;
 
     public UserMeal() {
