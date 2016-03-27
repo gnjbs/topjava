@@ -16,11 +16,11 @@ public class MealTestData {
 
     public static final ModelMatcher<UserMeal, String> MATCHER = new ModelMatcher<>(UserMeal::toString);
     public static final List<UserMeal> MEAL_LIST = Arrays.asList(
-            new UserMeal(100002, LocalDateTime.of(2016, Month.MARCH, 21, 0, 0), "Завтрак", 500),
-            new UserMeal(100003, LocalDateTime.of(2016, Month.MARCH, 21, 0, 0), "Обед", 1000),
-            new UserMeal(100004, LocalDateTime.of(2016, Month.MARCH, 21, 0, 0), "Ужин", 500),
-            new UserMeal(100005, LocalDateTime.of(2016, Month.MARCH, 22, 0, 0), "Завтрак", 500),
-            new UserMeal(100006, LocalDateTime.of(2016, Month.MARCH, 22, 0, 0), "Обед", 1000),
-            new UserMeal(100007, LocalDateTime.of(2016, Month.MARCH, 22, 0, 0), "Ужин", 510)
+            new UserMeal(100002, LocalDateTime.of(2016, Month.MARCH, 21, 9, 0), "Завтрак", 500),
+            new UserMeal(100003, LocalDateTime.of(2016, Month.MARCH, 21, 12, 0), "Обед", 1000),
+            new UserMeal(100004, LocalDateTime.of(2016, Month.MARCH, 21, 18, 0), "Ужин", 500),
+            new UserMeal(100005, LocalDateTime.of(2016, Month.MARCH, 22, 9, 0), "Завтрак", 500),
+            new UserMeal(100006, LocalDateTime.of(2016, Month.MARCH, 22, 12, 0), "Обед", 1000),
+            new UserMeal(100007, LocalDateTime.of(2016, Month.MARCH, 22, 18, 0), "Ужин", 510)
     );
 }
