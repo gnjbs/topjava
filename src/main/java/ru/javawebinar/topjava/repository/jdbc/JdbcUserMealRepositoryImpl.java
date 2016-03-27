@@ -12,6 +12,7 @@ import ru.javawebinar.topjava.model.UserMeal;
 import ru.javawebinar.topjava.repository.UserMealRepository;
 
 import javax.sql.DataSource;
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -76,8 +77,8 @@ public class JdbcUserMealRepositoryImpl implements UserMealRepository {
 
     @Override
     public List<UserMeal> getBetween(LocalDateTime startDate, LocalDateTime endDate, int userId) {
-//TODO Разобраться с дотой
-        return jdbcTemplate.query("SELECT * FROM meals WHERE meal_date BETWEEN " + startDate +
-                " AND " + endDate + " ORDER BY dateTime DESC", ROW_MAPPER);
+//TODO Разобраться с дAтой
+        return jdbcTemplate.query("SELECT * FROM meals WHERE dateTime BETWEEN " + Timestamp.valueOf(startDate) +
+                " AND " + Timestamp.valueOf(endDate) + " ORDER BY dateTime", ROW_MAPPER);
     }
 }
