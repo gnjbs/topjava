@@ -49,10 +49,8 @@ public class UserMealServiceTest {
 
     @Test
     public void testDelete() throws Exception {
-        //
         service.delete(100002, USER.getId());
         service.delete(100003, ADMIN.getId());
-
     }
 
     @Test(expected = NotFoundException.class)
