@@ -89,7 +89,7 @@ public class UserMealServiceTest {
     public void testUpdate() throws Exception {
         UserMeal um = new UserMeal(100002, LocalDateTime.of(2016, Month.MARCH, 21, 9, 30), "Завтрак", 500);
         service.update(um, USER_ID);
-        MATCHER.assertEquals(um, service.get(100002, 100000));
+        MATCHER.assertEquals(um, service.get(100002, USER_ID));
     }
 
     @Test
